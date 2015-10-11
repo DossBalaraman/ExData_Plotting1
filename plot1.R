@@ -1,0 +1,6 @@
+alldata <- read.table("household_power_consumption.txt", header=TRUE, sep=";")
+limitedata<-subset(alldata, alldata$Global_active_power != "?" & (as.Date(alldata$Date) == "01/02/2007" | as.Date(alldata$Date) == "02/02/2007"))
+counts <- table(limitedata$Global_active_power)
+png("plot1.png", width=480, height=480)
+hist(counts, col="red", main="Global Active Power", xlab="Global Active Power (kilowatts)")
+dev.off()
